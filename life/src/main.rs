@@ -1,9 +1,9 @@
 extern crate rand;
-// extern crate termion;
 
 use std::{env, thread, time};
 use std::fs::File;
 use std::io::{BufReader, BufRead};
+use colored::*;
 
 const MAX_SIZE: usize = 75;
 
@@ -32,7 +32,7 @@ fn main() {
         println!("");
 
         displayworld(world);
-        println!("Population at generation {g} is {c}", g = generations, c = census(world));
+        println!("{} {g} is {c}", "Population at generation".blue(), g = generations, c = census(world));
         thread::sleep(time::Duration::from_secs(2));
 
         if census(world) == 0 {
@@ -65,7 +65,7 @@ fn displayworld(world: [[u8; MAX_SIZE]; MAX_SIZE]) {
     for i in 0..MAX_SIZE - 1 {
         for j in 0..MAX_SIZE - 1 {
             if world[i][j] == 1 {
-                print!("*");
+                print!("{}", "*".red());
             } else {
                 print!(" ");
             }
