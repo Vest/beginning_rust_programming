@@ -29,7 +29,7 @@ fn main() {
         let temp = generation(world);
         world = temp;
         generations += 1;
-        println!("");
+        print!("{esc}c", esc = 27 as char);
 
         displayworld(world);
         println!("{} {g} is {c}", "Population at generation".blue(), g = generations, c = census(world));
